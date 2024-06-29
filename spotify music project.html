@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="apple-touch-icon" sizes="180x180" href="/spotify image/spotify.png" style="border-radius: 50%; padding: 10px;">
+    <link rel="icon" type="image/png" sizes="32x32"  href="/spotify image/spotify.png" style="border-radius: 50%; padding: 10px;"> 
+    <link rel="icon" type="image/png" sizes="16x16" href="/spotify image/spotify.png" style="border-radius: 50%; padding: 10px;">
+    <link rel="manifest" href="/spotify image/spotify.png" style="border-radius: 50%; padding: 10px;">
+    <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <title>spotify-web player</title>
+</head>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+
+    }
+    body{
+        display: flex;
+        background-color: rgb(0, 0, 0);
+        background-repeat: no-repeat;
+        
+    }
+    .leftbox{
+        border: 2px solid black;
+        width: 30%;
+        background-color: black;
+        font-size: 15px;
+        /* display: block; */
+        height: 100vh;
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        font-weight: 900;
+
+        
+        
+    }
+    .upper-leftbox{
+        background-color: rgb(32, 32, 32);
+        border-radius: 10px;
+        margin: 10px;
+        padding: 15px;
+        margin-left: 8px;
+        margin-right: 0px;
+
+    }
+    .lower-leftbox{
+        background-color: rgb(32, 32, 32);
+        /* height: 100%; */
+        border-radius: 10px;
+        margin: 10px;
+        padding: 10px;
+        margin-left: 8px;
+        margin-right: 0px;
+    }
+    .leftbox span{
+        filter: invert(1);
+        
+         
+    }
+    .spotify-logo,.home-logo span{
+        margin: 10px;
+        
+    }
+    .upper-leftbox ul li{
+        list-style: none;
+        width: 14px;
+        
+        
+    }
+    .spotify-logo span{
+        display: flex;
+        padding-bottom: 0;
+        cursor: pointer;
+        
+
+    }
+    .upper-leftbox ul li span{
+        display: flex;
+        gap: 15px;
+        padding-top: 15px;
+        padding-bottom: 0px;
+        cursor: pointer;
+
+    }
+    .lower-leftbox span{
+        display: flex;
+        gap: 15px;
+        width: 50%;
+        
+
+
+    }
+    .lower-leftbox-1{
+       display: flex;
+        
+    }
+    .lower-leftbox-2 footer a{
+       color: aliceblue;
+       text-decoration: none;
+       padding-bottom: 20px;
+        
+    }
+    
+    
+    .plus-icon{
+        size: 4px;
+        justify-content: right;
+        
+    }
+
+    .rightbox{
+        border: 2px solid black;
+        width: 100%;
+        height: 100vh;
+        background-image: linear-gradient(to top,black, rgb(43, 43, 43));
+        /* height: 100%; */
+        border-radius: 10px;
+        margin: 10px;   
+    }
+    .all-container{
+        background-image: linear-gradient(to top,rgb(32, 32, 32), rgb(53, 53, 53));
+        overflow-y: scroll;
+        max-height: 70vh;
+    }
+    .left-icon{
+        filter: invert(1);
+        display: flex;
+        gap: 0px;
+        border: none;
+        margin-top: 7px;
+        margin-left: 7px;
+        
+    }
+    .left-icon button{
+        border: none;
+        padding: 3px;
+        border-radius: 50%;
+        margin: 10px;
+        
+    }
+    .lower-leftbox-2 button{
+        border: 1px solid rgb(255, 248, 248);
+        box-shadow:  -0px 0px 10px 2px rgb(255, 248, 248 ,0.1) ;
+        border-radius: 19px;
+        padding: 5px;
+        background: black;
+        
+    }
+    .rightbox-upper{
+        display: flex;
+        color: aliceblue;
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        font-size: 19px;
+        font-family: 900px;
+        justify-content: space-between;
+        
+        
+
+    }
+    .right-icon{
+        margin-top: 19px;
+        margin-right: 19px;
+        justify-content: right;
+        justify-items: right;
+        
+    }
+    .right-icon span{
+        padding: 10px;
+        justify-content: right;
+        cursor: pointer;
+
+
+    }
+    .greater-then{
+        background-color: aliceblue;
+        color: rgb(0, 0, 0);
+        font-weight: 900;
+        border-radius: 25px;
+        
+    }
+    .heading-element{
+        display: flex;
+        justify-content: space-between;
+        color: aliceblue;
+        padding: 10px;
+        margin: 10px;
+        font-size: 20px;
+        font-weight: 800;
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    }
+    .heading-element span:hover{
+        cursor: pointer;
+        font-style: normal;
+        text-decoration: underline;
+       
+        
+    }
+    .see-all{
+        font-size: 14px;
+        cursor: pointer;
+        color: rgb(196, 204, 204);
+        
+    }
+    .see-all:hover{
+        font-size: 14px;
+        cursor: pointer;
+        text-decoration: underline;
+    }
+    .Spotifyplaylist-conatiner,.artist-container,.radio-conatiner,.albums-conatiner,.featured{
+        display: flex;
+    }
+   .playlist-1 {
+    size: 150px;
+    background-color: rgb(37, 37, 37);
+    height: 280px;
+    width: 220px;
+    border-radius: 10px;
+    overflow: hidden;
+    margin: 10px;
+    position: relative;
+
+    
+   }
+   .playlist-1:hover {
+    size: 150px;
+    background-color: rgb(58, 57, 57);
+    height: 280px;
+    width: 220px;
+    border-radius: 10px;
+    overflow: hidden;
+    margin: 10px;
+    cursor: pointer;
+    position: relative;
+
+    
+   }
+   .playlist-1  img{
+    height: 200px;
+    width: 200px;
+    padding: 10px;
+    border-radius: 20px;
+    
+   }
+   h2{
+    color: aliceblue;
+    font-size: 19px;
+    padding-left: 5px;
+    padding-right: 5px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+   }
+   p{
+    color: rgb(167, 169, 171);
+    font-size: 13px;
+    padding-left: 5px;
+    padding-right: 5px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+   }
+
+   .play-icon img,.playlist-1 span audio{
+    height: 45px;
+    width: 45px;
+    position: absolute;
+    padding-top: 160px;
+    padding-left: 160px;
+
+   }
+   .playlist-1 span audio{
+    opacity: 0;
+   }
+   .play-icon img:hover{
+    height: 46px;
+    width: 46px;
+    position: absolute;
+    padding-top: 160px;
+    padding-left: 160px;
+    /* filter: invert(1); */
+
+   }
+   .rightbox-footer{
+    background-color: rgb(33, 33, 33);
+    position: absolute;
+    /* width: 100%; */
+    padding: 10px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    text-decoration: none;
+    position: sticky;
+    
+   }
+   .rightbox-footer span{
+    color: aliceblue;
+    font-size: 20px;
+   }
+   .rightbox-footer span a{
+    color: rgb(166, 168, 170);
+    text-decoration: none;
+    font-size: 15px;
+    
+   }
+
+   .footer-container{
+    display: flex;
+   }
+    .rightbox-footer{
+        display: flex;
+    }
+    .contact-container{
+        display: flex;
+        justify-content: right;
+       
+    }
+    .footer-container1{
+        display: flex;
+    }
+
+    /* music bar  */
+    .music-bar span img{
+        height: 30px;
+        width: 30px;
+        filter: invert(1);
+        align-items: center;
+        padding: 10px;
+        
+    }
+    .music-bar{
+        align-items: center;
+        justify-content: center;
+        height: 40px;
+        display: flex;
+        
+        /* background-color: chartreuse; */
+        background-image: linear-gradient(to left top,rgb(3, 75, 3),rgb(18, 220, 18));
+        padding: 10px;
+        
+        justify-content: center;
+
+    }
+    .lower-leftbox-3{
+        overflow-y: auto;
+        max-height: 50vh;
+        
+    }
+    /* .lower-leftbox-2{
+        position: sticky;
+        margin-bottom: 0px;
+    } */
+
+
+
+</style>
+<body>
+    <div class="leftbox">
+        <div class="upper-leftbox">
+        <div class="spotify-logo">
+            <span><img id="icon" src="spotify image/social.png" style="height: 25px; width: 25px; cursor: pointer;">Spotify</span>
+        </div>
+        <ul class="home-logo">
+            <li><span><img id="icon" src="spotify image/house.png" style="height: 25px; width: 25px; cursor: pointer;">Home</span></li>
+            <li><span><img id="icon" src="spotify image/search.png" style="height: 25px; width: 25px; cursor: pointer;">Search</span></li>
+        </ul>
+
+        </div>
+        
+    
+    <div class="lower-leftbox">
+        <div class="lower-leftbox-1">
+        <span><bottun><img id="icon" src="spotify image/music-and-multimedia.png" style="height: 25px; width: 25px; cursor: pointer;"></bottun>Your Library</span>
+        <span class="plus-icon"><bottun><img id="plus" src="spotify image/plus.png" style="height: 15px; width: 15px; border-radius: 50%; padding: 5px; margin-right: 0; cursor: pointer;"></bottun></span>
+        </div>
+
+<div class="lower-leftbox-3">
+   
+    <div class="left-mid">
+    <span></span>
+    <figure>
+       
+        <audio controls src="/songs/black-box-aventador-lp-700-4-12577.mp3"></audio>
+        <!-- <a href="/songs/black-box-aventador-lp-700-4-12577.mp3"> </a> -->
+        <audio controls src="/songs/dancing-in-the-stars-219514.mp3"></audio>
+        <a href="songs/dancing-in-the-stars-219514.mp3"> </a>
+        <audio controls src="/songs/Don't Fret - Quincas Moreira.mp3"></audio>
+        <a href="songs/Don't Fret - Quincas Moreira.mp3"> </a>
+        <audio controls src="/songs/I Wonder Whose Kissing Her Now - Freedom Trail Studio.mp3"></audio>
+        <a href="songs/I Wonder Whose Kissing Her Now - Freedom Trail Studio.mp3"> </a>
+        <audio controls src="/songs/July - John Patitucci.mp3"></audio>
+        <a href="songs/July - John Patitucci.mp3"> </a>
+        <audio controls src="/songs/kaise-bhula-dun-ashir-184935.mp3"></audio>
+        <a href="songs/kaise-bhula-dun-ashir-184935.mp3"> </a>
+        <audio controls src="/songs/love-song-152731.mp3"></audio>
+        <a href="songs/love-song-152731.mp3"> </a>
+        <audio controls src="/songs/river-flows-in-you-romantic-piano-215745.mp3"></audio>
+        <a href="songs/river-flows-in-you-romantic-piano-215745.mp3"> </a>
+        <audio controls src="/songs/melody-bgm-tamil-love-indian-186668.mp3"></audio>
+        <a href="songs/melody-bgm-tamil-love-indian-186668.mp3"> </a>
+        <audio controls src="/songs/teri-ye-adaa-romantic-song-206526.mp3"></audio>
+        <a href="songs/teri-ye-adaa-romantic-song-206526.mp3"> </a>
+        <audio controls src="/songs/When Irish Eyes Are Smiling - Freedom Trail Studio.mp3"></audio>
+        <a href="songs/When Irish Eyes Are Smiling - Freedom Trail Studio.mp3"> </a>
+        <audio controls src="/songs/black-box-aventador-lp-700-4-12577.mp3"></audio>
+        <a href="/songs/black-box-aventador-lp-700-4-12577.mp3"> </a>
+        <audio controls src="/songs/dancing-in-the-stars-219514.mp3"></audio>
+        <a href="songs/dancing-in-the-stars-219514.mp3"> </a>
+        <audio controls src="/songs/Don't Fret - Quincas Moreira.mp3"></audio>
+        <a href="songs/Don't Fret - Quincas Moreira.mp3"> </a>
+        <audio controls src="/songs/I Wonder Whose Kissing Her Now - Freedom Trail Studio.mp3"></audio>
+        <a href="songs/I Wonder Whose Kissing Her Now - Freedom Trail Studio.mp3"> </a>
+        <audio controls src="/songs/July - John Patitucci.mp3"></audio>
+        <a href="songs/July - John Patitucci.mp3"> </a>
+        <audio controls src="/songs/kaise-bhula-dun-ashir-184935.mp3"></audio>
+        <a href="songs/kaise-bhula-dun-ashir-184935.mp3"> </a>
+        <audio controls src="/songs/love-song-152731.mp3"></audio>
+        <a href="songs/love-song-152731.mp3"> </a>
+        <audio controls src="/songs/river-flows-in-you-romantic-piano-215745.mp3"></audio>
+        <a href="songs/river-flows-in-you-romantic-piano-215745.mp3"> </a>
+        <audio controls src="/songs/melody-bgm-tamil-love-indian-186668.mp3"></audio>
+        <a href="songs/melody-bgm-tamil-love-indian-186668.mp3"> </a>
+        <audio controls src="/songs/teri-ye-adaa-romantic-song-206526.mp3"></audio>
+        <a href="songs/teri-ye-adaa-romantic-song-206526.mp3"> </a>
+        <audio controls src="/songs/When Irish Eyes Are Smiling - Freedom Trail Studio.mp3"></audio>
+        <a href="songs/When Irish Eyes Are Smiling - Freedom Trail Studio.mp3"> </a>
+        
+      </figure>
+    </div>
+    <div class="left-mid"></div>
+</div>
+
+
+
+
+
+
+
+        <div class="lower-leftbox-2">
+    <footer>
+        <a href="#">Legal</a> 
+        <a href="#">Safety & Privacy Center</a> 
+        <a href="#">Privacy Policy</a> 
+        <a href="#">Cookies</a> 
+        <a href="#">About Ads</a> 
+        <a href="#">Accessibility</a> 
+        <a href="#">Cookies</a>
+        <button><span style="padding: 5px;border: none; border-radius: 50%;"><img id="world-icon" src="spotify image/world-wide-web.png" style="height: 12px; width: 12px; filter: invert(1); color: black; ">English</span></button>
+    </footer>
+</div>
+        
+    </div>
+        
+    </div>
+    <div class="rightbox">
+        <div class="rightbox-upper">
+            <div class="left-icon">
+                <button><span><img id="less then" src="spotify image/less-than-symbol.png" style="height: 25px; width: 28px;"></span></button>
+                <button ><span><img id="greater then" src="spotify image/greater-than-symbol.png" style="height: 25px; width: 28px;"></span></button>
+            </div>
+            <div class="right-icon">
+                <span>Sign up</span>
+                <span class="greater-then" style="padding-left: 25px; padding-right: 25px; padding-top: 13px; padding-bottom: 13px;">Log in </span>
+            </div>
+        </div>
+
+<div class="all-container">
+        <div class="playlist-container">
+            <div class="heading-element">
+            <span class="artists">Popular artists</span>
+            <span class="see-all">Show all</span>
+            </div>  
+            <div class="artist-container">
+            <!-- <iframe style="border-radius:12px" src="https://open.spotify.com/embed/artist/1wRPtKGflJrBx9BmLsSwlU?utm_source=generator" width="19%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+            <iframe style="border-radius:12px" src="https://open.spotify.com/embed/artist/4YRxDV8wJFPHPTeXepOstw?utm_source=generator" width="19%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+            <iframe style="border-radius:12px" src="https://open.spotify.com/embed/artist/1mYsTxnqsietFxj1OgoGbG?utm_source=generator" width="19%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+            <iframe style="border-radius:12px" src="https://open.spotify.com/embed/artist/4zCH9qm4R2DADamUHMCa6O?utm_source=generator" width="19%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+            <iframe style="border-radius:12px" src="https://open.spotify.com/embed/artist/1mBydYMVBECdDmMfE2sEUO?utm_source=generator" width="19%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+            <iframe style="border-radius:12px" src="https://open.spotify.com/embed/artist/5wJ1H6ud777odtZl5gG507?utm_source=generator" width="19%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe> -->
+            <div class="playlist-1">
+                <span class="play-icon"><img id="play-icon" src="spotify image/play-button.png"></span>
+                <span > <img aria-hidden="false" draggable="false" loading="lazy" src="https://i.scdn.co/image/ab67706f00000002e7a67be84848d33ee020b0c9" data-testid="card-image"  alt="" class="mMx2LUixlnN_Fu45JpFB yMQTWVwLJ5bV8VGiaqU3 yOKoknIYYzAE90pe7_SE Yn2Ei5QZn19gria6LjZj"></span>
+            <span><h2>Songs to Sing in the car</h2>
+            <p>Sing along and enjoy the drive</p></span>  
+              </div>
+               
+                <div class="playlist-1">
+                    <span class="play-icon"><img id="play-icon" src="spotify image/play-button.png"></span>
+                    <span></span>   
+                    <span>
+                        <h2></h2>
+                        <p></p>
+                    </span>  
+                  </div>
+                  <div class="playlist-1">
+                    <span class="play-icon"><img id="play-icon" src="spotify image/play-button.png"></span>
+                <span > <img aria-hidden="false" draggable="false" loading="lazy" src="https://i.scdn.co/image/ab67706f00000002e7a67be84848d33ee020b0c9" data-testid="card-image"  alt="" class="mMx2LUixlnN_Fu45JpFB yMQTWVwLJ5bV8VGiaqU3 yOKoknIYYzAE90pe7_SE Yn2Ei5QZn19gria6LjZj"></span>
+                <span><h2>Songs to Sing in the car</h2>
+                <p>Sing along and enjoy the drive</p></span> 
+                    </div> 
+
+                    <div class="playlist-1">
+                        <span class="play-icon"><img id="play-icon" src="spotify image/play-button.png"></span>
+                    <span > <img aria-hidden="false" draggable="false" loading="lazy" src="https://i.scdn.co/image/ab67706f00000002e7a67be84848d33ee020b0c9" data-testid="card-image"  alt="" class="mMx2LUixlnN_Fu45JpFB yMQTWVwLJ5bV8VGiaqU3 yOKoknIYYzAE90pe7_SE Yn2Ei5QZn19gria6LjZj"></span>
+                    <span><h2>Songs to Sing in the car</h2>
+                    <p>Sing along and enjoy the drive</p></span> 
+                        </div> 
+                        <div class="playlist-1"> 
+                            <span class="play-icon"><img id="play-icon" src="spotify image/play-button.png"></span>
+                    <span><img aria-hidden="false" draggable="false" loading="lazy" src="https://i.scdn.co/image/ab67706f00000002dec17246891b5b4eb97bdb0d" data-testid="card-image" alt="" class="mMx2LUixlnN_Fu45JpFB yMQTWVwLJ5bV8VGiaqU3 yOKoknIYYzAE90pe7_SE Yn2Ei5QZn19gria6LjZj"></span>   
+                    <span>
+                        <h2>chillout Lounge</h2>
+                        <p>just lean back and enjoy relaxed beats</p>
+                    </span> 
+                        </div>      
+        </div>
+        </div>
+        <div class="playlist-container">
+            <div class="heading-element">
+            <span class="albums">Popular albums</span>
+            <span class="see-all">Show all</span>
+            </div>
+            <div class="albums-conatiner">
+                <div class="playlist-1">
+                    <span class="play-icon"><img id="play-icon" src="spotify image/play-button.png"></span>
+                <span > <img aria-hidden="false" draggable="false" loading="lazy" src="https://i.scdn.co/image/ab67706f00000002e7a67be84848d33ee020b0c9" data-testid="card-image"  alt="" class="mMx2LUixlnN_Fu45JpFB yMQTWVwLJ5bV8VGiaqU3 yOKoknIYYzAE90pe7_SE Yn2Ei5QZn19gria6LjZj"></span>
+                <span><h2>Songs to Sing in the car</h2>
+                <p>Sing along and enjoy the drive</p></span> 
+                    </div> 
+                    <div class="playlist-1"> 
+                        <span class="play-icon"><img id="play-icon" src="spotify image/play-button.png"></span>
+                <span><img aria-hidden="false" draggable="false" loading="lazy" src="https://i.scdn.co/image/ab67706f00000002dec17246891b5b4eb97bdb0d" data-testid="card-image" alt="" class="mMx2LUixlnN_Fu45JpFB yMQTWVwLJ5bV8VGiaqU3 yOKoknIYYzAE90pe7_SE Yn2Ei5QZn19gria6LjZj"></span>   
+                <span>
+                    <h2>chillout Lounge</h2>
+                    <p>just lean back and enjoy relaxed beats</p>
+                </span> 
+                    </div>
+
+                    <div class="playlist-1">
+                        <span class="play-icon"><img id="play-icon" src="spotify image/play-button.png"></span>
+                    <span > <img aria-hidden="false" draggable="false" loading="lazy" src="https://i.scdn.co/image/ab67706f00000002e7a67be84848d33ee020b0c9" data-testid="card-image"  alt="" class="mMx2LUixlnN_Fu45JpFB yMQTWVwLJ5bV8VGiaqU3 yOKoknIYYzAE90pe7_SE Yn2Ei5QZn19gria6LjZj"></span>
+                    <span><h2>Songs to Sing in the car</h2>
+                    <p>Sing along and enjoy the drive</p></span> 
+                        </div> 
+                        <div class="playlist-1"> 
+                            <span class="play-icon"><img id="play-icon" src="spotify image/play-button.png"></span>
+                    <span><img aria-hidden="false" draggable="false" loading="lazy" src="https://i.scdn.co/image/ab67706f00000002dec17246891b5b4eb97bdb0d" data-testid="card-image" alt="" class="mMx2LUixlnN_Fu45JpFB yMQTWVwLJ5bV8VGiaqU3 yOKoknIYYzAE90pe7_SE Yn2Ei5QZn19gria6LjZj"></span>   
+                    <span>
+                        <h2>chillout Lounge</h2>
+                        <p>just lean back and enjoy relaxed beats</p>
+                    </span> 
+                        </div>
+                        <div class="playlist-1"> 
+                            <span class="play-icon"><img id="play-icon" src="spotify image/play-button.png"></span>
+                    <span><img aria-hidden="false" draggable="false" loading="lazy" src="https://i.scdn.co/image/ab67706f00000002dec17246891b5b4eb97bdb0d" data-testid="card-image" alt="" class="mMx2LUixlnN_Fu45JpFB yMQTWVwLJ5bV8VGiaqU3 yOKoknIYYzAE90pe7_SE Yn2Ei5QZn19gria6LjZj"></span>   
+                    <span>
+                        <h2>chillout Lounge</h2>
+                        <p>just lean back and enjoy relaxed beats</p>
+                    </span> 
+                        </div>
+
+                
+        
+            </div>
+        </div>
+        <div class="playlist-container">
+            <div class="heading-element">
+            <span class="radio">Popular radio</span>
+            <span class="see-all">Show all</span>
+            </div>
+            <div class="radio-conatiner">
+                <div class="playlist-1">
+                    <span class="play-icon"><img id="play-icon" src="spotify image/play-button.png"></span>
+                <span > <img aria-hidden="false" draggable="false" loading="lazy" src="https://i.scdn.co/image/ab67706f00000002e7a67be84848d33ee020b0c9" data-testid="card-image"  alt="" class="mMx2LUixlnN_Fu45JpFB yMQTWVwLJ5bV8VGiaqU3 yOKoknIYYzAE90pe7_SE Yn2Ei5QZn19gria6LjZj"></span>
+                <span><h2>Songs to Sing in the car</h2>
+                <p>Sing along and enjoy the drive</p></span> 
+                    </div> 
+                <div class="playlist-1">
+                    <span class="play-icon"><img id="play-icon" src="spotify image/play-button.png"></span>
+                <span > <img aria-hidden="false" draggable="false" loading="lazy" src="https://i.scdn.co/image/ab67706f00000002e7a67be84848d33ee020b0c9" data-testid="card-image"  alt="" class="mMx2LUixlnN_Fu45JpFB yMQTWVwLJ5bV8VGiaqU3 yOKoknIYYzAE90pe7_SE Yn2Ei5QZn19gria6LjZj"></span>
+                <span><h2>Songs to Sing in the car</h2>
+                <p>Sing along and enjoy the drive</p></span> 
+                    </div> 
+                <div class="playlist-1">
+                    <span class="play-icon"><img id="play-icon" src="spotify image/play-button.png"></span>
+                <span > <img aria-hidden="false" draggable="false" loading="lazy" src="https://i.scdn.co/image/ab67706f00000002e7a67be84848d33ee020b0c9" data-testid="card-image"  alt="" class="mMx2LUixlnN_Fu45JpFB yMQTWVwLJ5bV8VGiaqU3 yOKoknIYYzAE90pe7_SE Yn2Ei5QZn19gria6LjZj"></span>
+                <span><h2>Songs to Sing in the car</h2>
+                <p>Sing along and enjoy the drive</p></span> 
+                    </div> 
+                <div class="playlist-1">
+                    <span class="play-icon"><img id="play-icon" src="spotify image/play-button.png"></span>
+                <span > <img aria-hidden="false" draggable="false" loading="lazy" src="https://i.scdn.co/image/ab67706f00000002e7a67be84848d33ee020b0c9" data-testid="card-image"  alt="" class="mMx2LUixlnN_Fu45JpFB yMQTWVwLJ5bV8VGiaqU3 yOKoknIYYzAE90pe7_SE Yn2Ei5QZn19gria6LjZj"></span>
+                <span><h2>Songs to Sing in the car</h2>
+                <p>Sing along and enjoy the drive</p></span> 
+                    </div> 
+                <div class="playlist-1">
+                    <span class="play-icon"><img id="play-icon" src="spotify image/play-button.png"></span>
+                <span > <img aria-hidden="false" draggable="false" loading="lazy" src="https://i.scdn.co/image/ab67706f00000002e7a67be84848d33ee020b0c9" data-testid="card-image"  alt="" class="mMx2LUixlnN_Fu45JpFB yMQTWVwLJ5bV8VGiaqU3 yOKoknIYYzAE90pe7_SE Yn2Ei5QZn19gria6LjZj"></span>
+                <span><h2>Songs to Sing in the car</h2>
+                <p>Sing along and enjoy the drive</p></span> 
+                    </div> 
+            </div>
+        </div>
+        <div class="playlist-container">
+            <div class="heading-element">
+            <span class="Featured-charts">Featured-charts</span>
+            <span class="see-all">Show all</span>
+            </div>
+            <div class="featured">
+                <div class="playlist-1">
+                    <span class="play-icon"><img id="play-icon" src="spotify image/play-button.png"></span>
+                <span > <img aria-hidden="false" draggable="false" loading="lazy" src="https://i.scdn.co/image/ab67706f00000002e7a67be84848d33ee020b0c9" data-testid="card-image"  alt="" class="mMx2LUixlnN_Fu45JpFB yMQTWVwLJ5bV8VGiaqU3 yOKoknIYYzAE90pe7_SE Yn2Ei5QZn19gria6LjZj"></span>
+                <span><h2>Songs to Sing in the car</h2>
+                <p>Sing along and enjoy the drive</p></span> 
+                    </div> 
+                    <div class="playlist-1">
+                        <span class="play-icon"><img id="play-icon" src="spotify image/play-button.png"></span>
+                    <span > <img aria-hidden="false" draggable="false" loading="lazy" src="https://i.scdn.co/image/ab67706f00000002e7a67be84848d33ee020b0c9" data-testid="card-image"  alt="" class="mMx2LUixlnN_Fu45JpFB yMQTWVwLJ5bV8VGiaqU3 yOKoknIYYzAE90pe7_SE Yn2Ei5QZn19gria6LjZj"></span>
+                    <span><h2>Songs to Sing in the car</h2>
+                    <p>Sing along and enjoy the drive</p></span> 
+                        </div>
+                <div class="playlist-1">
+                    <span class="play-icon"><img id="play-icon" src="spotify image/play-button.png"></span>
+                <span > <img aria-hidden="false" draggable="false" loading="lazy" src="https://i.scdn.co/image/ab67706f00000002e7a67be84848d33ee020b0c9" data-testid="card-image"  alt="" class="mMx2LUixlnN_Fu45JpFB yMQTWVwLJ5bV8VGiaqU3 yOKoknIYYzAE90pe7_SE Yn2Ei5QZn19gria6LjZj"></span>
+                <span><h2>Songs to Sing in the car</h2>
+                <p>Sing along and enjoy the drive</p></span> 
+                    </div> 
+                    <div class="playlist-1">
+                        <span class="play-icon"><img id="play-icon" src="spotify image/play-button.png"></span>
+                    <span > <img aria-hidden="false" draggable="false" loading="lazy" src="https://i.scdn.co/image/ab67706f00000002e7a67be84848d33ee020b0c9" data-testid="card-image"  alt="" class="mMx2LUixlnN_Fu45JpFB yMQTWVwLJ5bV8VGiaqU3 yOKoknIYYzAE90pe7_SE Yn2Ei5QZn19gria6LjZj"></span>
+                    <span><h2>Songs to Sing in the car</h2>
+                    <p>Sing along and enjoy the drive</p></span> 
+                        </div>
+                <div class="playlist-1">
+                    <span class="play-icon"><img id="play-icon" src="spotify image/play-button.png"></span>
+                <span > <img aria-hidden="false" draggable="false" loading="lazy" src="https://i.scdn.co/image/ab67706f00000002e7a67be84848d33ee020b0c9" data-testid="card-image"  alt="" class="mMx2LUixlnN_Fu45JpFB yMQTWVwLJ5bV8VGiaqU3 yOKoknIYYzAE90pe7_SE Yn2Ei5QZn19gria6LjZj"></span>
+                <span><h2>Songs to Sing in the car</h2>
+                <p>Sing along and enjoy the drive</p></span> 
+                    </div> 
+                   
+            </div>
+        </div>
+        <div class="playlist-container">
+            <div class="heading-element">
+            <span class="spotify-playlist">Spotify Playlists</span>
+            <span class="see-all">Show all</span>
+            </div>
+            <div class="Spotifyplaylist-conatiner">
+                <div class="playlist-1">
+                <span class="play-icon"><img id="play-icon" src="spotify image/play-button.png"></span>
+            <span > <img aria-hidden="false" draggable="false" loading="lazy" src="https://i.scdn.co/image/ab67706f00000002e7a67be84848d33ee020b0c9" data-testid="card-image"  alt="" class="mMx2LUixlnN_Fu45JpFB yMQTWVwLJ5bV8VGiaqU3 yOKoknIYYzAE90pe7_SE Yn2Ei5QZn19gria6LjZj"></span>
+            <span><h2>Songs to Sing in the car</h2>
+            <p>Sing along and enjoy the drive</p></span> 
+                </div> 
+                <div class="playlist-1"> 
+                    <span class="play-icon"><img id="play-icon" src="spotify image/play-button.png"></span>
+            <span><img aria-hidden="false" draggable="false" loading="lazy" src="https://i.scdn.co/image/ab67706f00000002dec17246891b5b4eb97bdb0d" data-testid="card-image" alt="" class="mMx2LUixlnN_Fu45JpFB yMQTWVwLJ5bV8VGiaqU3 yOKoknIYYzAE90pe7_SE Yn2Ei5QZn19gria6LjZj"></span>   
+            <span>
+                <h2>chillout Lounge</h2>
+                <p>just lean back and enjoy relaxed beats</p>
+            </span> 
+                </div>
+          <div class="playlist-1">
+            <span class="play-icon"><img id="play-icon" src="spotify image/play-button.png"></span>
+            <span></span>   
+            <span>
+                <h2></h2>
+                <p></p>
+            </span>  
+          </div>
+          <div class="playlist-1">
+            <span class="play-icon"><img id="play-icon" src="spotify image/play-button.png"></span>
+        <span > <img aria-hidden="false" draggable="false" loading="lazy" src="https://i.scdn.co/image/ab67706f00000002e7a67be84848d33ee020b0c9" data-testid="card-image"  alt="" class="mMx2LUixlnN_Fu45JpFB yMQTWVwLJ5bV8VGiaqU3 yOKoknIYYzAE90pe7_SE Yn2Ei5QZn19gria6LjZj"></span>
+        <span><h2>Songs to Sing in the car</h2>
+        <p>Sing along and enjoy the drive</p></span> 
+            </div> 
+            <div class="playlist-1">
+                <span class="play-icon"><img id="play-icon" src="spotify image/play-button.png">
+                    <audio controls src="/songs/river-flows-in-you-romantic-piano-215745.mp3"></audio></span>
+                
+            <span > <img aria-hidden="false" draggable="false" loading="lazy" src="https://i.scdn.co/image/ab67706f00000002e7a67be84848d33ee020b0c9" data-testid="card-image"  alt="" class="mMx2LUixlnN_Fu45JpFB yMQTWVwLJ5bV8VGiaqU3 yOKoknIYYzAE90pe7_SE Yn2Ei5QZn19gria6LjZj"></span>
+            <span><h2>Songs to Sing in the car</h2>
+            <p>Sing along and enjoy the drive</p></span> 
+                </div> 
+          
+             
+             
+            
+            </div>
+        </div>
+    </div>
+        <footer class="rightbox-footer">
+            <div class="footer-container">
+                <div class="footer-container1"> 
+                    <span>Company
+                        
+                        <a href="#">About </a>
+                        <a href="#">Jobs</a>
+                        <a href="#">Ror the Record </a>
+                    </span>
+                </div>
+                
+                <div class="footer-container1">
+                    <span>Communities
+                        <a href="#">For artists </a>
+                        <a href="#">Developers</a>
+                        <a href="#">Advertising </a>
+                        <a href="#">Investors </a>
+                        <a href="#">Vendors</a>
+                    </span>
+                </div>
+                <div class="footer-container1">
+                    <span>Useful links
+                        <a href="#">Support </a>
+                        <a href="#">Free Mobile App</a>
+                        
+                    </span>
+                </div>
+                <div class="footer-container1">
+                    <span>Spotify Plans
+                        <a href="#">Premium</a>
+                        <a href="#">Individual</a>
+                        <a href="#">Premium Duo</a>
+                        <a href="#">Premium Family</a>
+                        <a href="#">Premium Student</a>
+                        <a href="#">Spotify Free</a>
+                       
+                        
+                    </span>
+                </div>
+            </div>
+            <div class="contact-container">  
+                <a href="https://instagram.com/anand33875?igshid=YTQwZjQ0NmI0OA=="  target="_blank" class="insta-handle" rel="noopener noreferrer"> <i class="fa fa-instagram fa-lg insta-handle" style="color: aliceblue;"></i></a>
+                <a href="https://youtube.com/@artsideas3081?feature=shared"  target="_blank" class="tw-handle" rel="noopener noreferrer"> <i class="fa fa-twitter fa-lg tw-handle" style="color: aliceblue;"></i></a>
+                <a href="https://www.facebook.com/anu.anand.1048?mibextid=ZbWKwL"  target="_blank" class="fb-handle" rel="noopener noreferrer"> <i class="fa fa-facebook fa-lg fb-handle" style="color: aliceblue;"></i></a>
+            </div>
+        </footer>
+        <div class="music-bar">
+            <div class="songinfo"></div>
+            <span><img id="backbtn" src="spotify image/back-icon.png"></span>
+            <span><img id="masterPlay" src="spotify image/play.png"></span>
+            <span><img id="backbtn" src="spotify image/next-icon.png"></span>
+            <div class="songtime"></div>
+        </div>
+
+
+    </div>
+    <script>
+        console.log('lets write JS');
+
+    // async function main(){
+    //     let a= await fetch("http://127.0.0.1:5501/songs/")
+    //     let response = await a.text();
+    //     console.log(response)
+    //     let div = document.createElement("div")
+    //     div.innerHtml = response;
+    //     let tds = div.getElementsByTagName("td")
+    //     console.log(tds)
+    // }
+    // main()
+
+    let songIndex = 0;
+    let audioElement = new Audio('black-box-aventador-lp-700-4-12577.mp3');
+    let masterPlay = document.getElementById('masterPlay');
+    let myProgressBar = document.getElementById('myProgressBar');
+       
+    let song = [
+        {songName: "dancing-in-the-stars-219514.mp3",filePath :"/songs/dancing-in-the-stars-219514.mp3"},
+
+    ]
+    // audioElement.play();
+    masterPlay.addEventListener('click',()=>{
+        if(audioElement.paused||audioElement.currentTime<=0){
+            audioElement.play();
+        }
+    })
+
+
+    myProgressBar.addEventListener('timeupdate',()=>{
+        console.log('timeupdate');
+    })
+    </script>
+    
+    
+</body>
+</html>

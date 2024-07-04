@@ -9,492 +9,11 @@
     <link rel="manifest" href="/spotify image/spotify.png" style="border-radius: 50%; padding: 10px;">
     <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
+<link rel="stylesheet" href="spotify.css">
     <title>spotify-web player</title>
 </head>
 <style>
-    *{
-        margin: 0;
-        padding: 0;
-        
-
-    }
-    body{
-        display: flex;
-        background-color: rgb(0, 0, 0);
-        background-repeat: no-repeat;
-        
-    }
-    .leftbox{
-        border: 2px solid black;
-        width: 30%;
-        background-color: black;
-        font-size: 15px;
-        /* display: block; */
-        height: 100vh;
-        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-        font-weight: 900;
-
-        
-        
-    }
-    .upper-leftbox{
-        background-color: rgb(32, 32, 32);
-        border-radius: 10px;
-        margin: 10px;
-        padding: 15px;
-        margin-left: 8px;
-        margin-right: 0px;
-
-    }
-    .lower-leftbox{
-        background-color: rgb(32, 32, 32);
-        /* height: 100%; */
-        border-radius: 10px;
-        margin: 10px;
-        padding: 10px;
-        margin-left: 8px;
-        margin-right: 0px;
-        justify-content: space-between;
-        display: block;
-    }
-    .leftbox span{
-        filter: invert(1);
-        
-         
-    }
-    .spotify-logo,.home-logo span{
-        margin: 10px;
-        
-    }
-    .upper-leftbox ul li{
-        list-style: none;
-        width: 14px;
-        
-        
-    }
-    .spotify-logo span{
-        display: flex;
-        padding-bottom: 0;
-        cursor: pointer;
-        
-
-    }
-    .upper-leftbox ul li span{
-        display: flex;
-        gap: 15px;
-        padding-top: 15px;
-        padding-bottom: 0px;
-        cursor: pointer;
-
-    }
-    .lower-leftbox span{
-        display: flex;
-        gap: 15px;
-        width: 50%;
-        
-
-
-    }
-    .lower-leftbox-1{
-       display: flex;
-       margin: 10px;
-        
-    }
-    .lower-leftbox-2 footer a{
-       color: rgb(164, 166, 167);
-       text-decoration: none;
-       padding-bottom: 20px;
-       font-size: 14px;
-       font-weight: 500;
-       word-spacing: 4px;
-       padding-top: 10px;
-       margin: 5px;
-       
-       
-        
-    }
-    .lower-leftbox-2 footer{
-        display: block;
-        
-        
-        
-    }
-    .footer1{
-        display: block;
-        height: 25vh;
-        padding-top: 30px;
-        
-    }
-    
-    
-    .plus-icon{
-        size: 4px;
-        justify-content: right;
-        
-    }
-    .plus-icon bottun img:hover{
-        height: 40px;
-        width: 40px;
-        color: rgb(129, 129, 129,0.1);
-        background-color: rgb(43, 42, 42,0.1);
-    }
-
-    .rightbox{
-        border: 2px solid black;
-        width: 100%;
-        height: 100vh;
-        max-width: max-content;
-        background-image: linear-gradient(to top,black, rgb(42, 42, 42));
-        /* height: 100%; */
-        border-radius: 10px;
-        margin: 10px;   
-    }
-    .all-container{
-        background-image: linear-gradient(to top,rgb(32, 32, 32), rgb(53, 53, 53));
-        overflow-y: scroll;
-        max-height: 70vh;
-        margin-right: 0;
-    }
-     
-
-.all-container::-webkit-scrollbar {
-  width: 10px;
-}
-
-.all-container::-webkit-scrollbar-thumb {
-  background-color: #666;
-  border-radius: 5px;
-}
-
-.all-container::-webkit-scrollbar-track {
-  background-color: #444;
-}
-
-    .left-icon{
-        filter: invert(1);
-        display: flex;
-        gap: 0px;
-        border: none;
-        margin-top: 7px;
-        margin-left: 7px;
-        
-    }
-    .left-icon button{
-        border: none;
-        padding: 3px;
-        border-radius: 50%;
-        margin: 10px;
-        
-    }
-    .lower-leftbox-2 button{
-        border: 1px solid rgb(108, 106, 106);
-        box-shadow:  -0px 0px 10px 2px rgb(255, 248, 248 ,0.1) ;
-        border-radius: 19px;
-        padding: 5px;
-        filter: invert(1);
-        background: rgb(240, 239, 239);
-        padding-left: 3px;
-        padding-right: 3px;
-        margin: 5px;
-        
-    }
-    .lower-leftbox-2 button:hover{
-        border: 2px solid rgb(26, 25, 25);
-        box-shadow:  -0px 0px 10px 2px rgb(255, 248, 248 ,0.1) ;
-        border-radius: 19px;
-        padding: 5px;
-        filter: invert(1);
-        background: rgb(252, 252, 252);
-        padding-left: 3px;
-        padding-right: 3px;
-        cursor: pointer;
-        
-    }
-    .lower-leftbox-2 button span{
-        color: rgb(203, 201, 201);
-        padding-left: 3px;
-        padding-right: 3px;
-    }
-    .lower-leftbox-2 button span:hover{
-        color: rgb(255, 255, 255);
-        padding-left: 3px;
-        padding-right: 3px;
-    }
-    .rightbox-upper{
-        display: flex;
-        color: rgb(200, 202, 204);
-        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-        font-size: 19px;
-        font-family: 900px;
-        justify-content: space-between;
-        
-        
-
-    }
-    .right-icon{
-        margin-top: 19px;
-        margin-right: 19px;
-        justify-content: right;
-        justify-items: right;
-        
-    }
-    .right-icon span{
-        padding: 10px;
-        justify-content: right;
-        cursor: pointer;
-
-
-    }
-    .greater-then{
-        background-color: aliceblue;
-        color: rgb(0, 0, 0);
-        font-weight: 900;
-        border-radius: 25px;
-        
-    }
-    .heading-element{
-        display: flex;
-        justify-content: space-between;
-        color: aliceblue;
-        padding: 10px;
-        margin: 10px;
-        font-size: 20px;
-        font-weight: 800;
-        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    }
-    .heading-element span:hover{
-        cursor: pointer;
-        font-style: normal;
-        text-decoration: underline;
-       
-        
-    }
-    .see-all{
-        font-size: 14px;
-        cursor: pointer;
-        color: rgb(196, 204, 204);
-        
-    }
-    .see-all:hover{
-        font-size: 14px;
-        cursor: pointer;
-        text-decoration: underline;
-    }
-    .Spotifyplaylist-conatiner,.artist-container,.radio-conatiner,.albums-conatiner,.featured{
-        display: flex;
-    }
-   .playlist-1 {
-    size: 150px;
-    background-color: rgb(42, 42, 42);
-    height: 280px;
-    width: 220px;
-    border-radius: 10px;
-    overflow: hidden;
-    margin: 10px;
-    position: relative;
-    transform: translateX(-50%);
-
-    
-   }
-   .playlist-1:hover {
-    size: 150px;
-    background-color: rgb(58, 57, 57);
-    height: 280px;
-    width: 220px;
-    border-radius: 10px;
-    overflow: hidden;
-    margin: 10px;
-    cursor: pointer;
-    position: relative;
-
-    
-   }
-   .playlist-1  img{
-    height: 200px;
-    width: 200px;
-    padding: 10px;
-    border-radius: 20px;
-    
-   }
-   h2{
-    color: aliceblue;
-    font-size: 19px;
-    padding-left: 5px;
-    padding-right: 5px;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-   }
-   p{
-    color: rgb(167, 169, 171);
-    font-size: 13px;
-    padding-left: 5px;
-    padding-right: 5px;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-   }
-
-   .play-icon img,.playlist-1 span audio{
-    height: 45px;
-    width: 45px;
-    position: absolute;
-    padding-top: 160px;
-    padding-left: 160px;
-
-   }
-   .playlist-1 span audio{
-    opacity: 0;
-   }
-   .play-icon img:hover{
-    height: 46px;
-    width: 46px;
-    position: absolute;
-    padding-top: 160px;
-    padding-left: 160px;
-    /* filter: invert(1); */
-
-   }
-   .rightbox-footer{
-    background-color: rgb(33, 33, 33);
-    position: absolute;
-    /* width: 100%; */
-    padding: 10px;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    text-decoration: none;
-    position: sticky;
-    justify-content: space-between;
-    
-   }
-   .rightbox-footer span{
-    color: aliceblue;
-    font-size: 20px;
-   }
-   .rightbox-footer span a{
-    color: rgb(166, 168, 170);
-    text-decoration: none;
-    font-size: 15px;
-    
-   }
-
-   .footer-container{
-    display: flex;
-    justify-content: space-around;
-    width: 70%;
-   }
-    .rightbox-footer{
-        display: flex;
-    }
-    .contact-container{
-        display: flex;
-        justify-content: right;
-        padding: 10px; 
-        margin-right: 20px;
-        
-    }
-    .contact-container span a{
-        padding: 15px;
-        margin: 10px;
-        border-radius: 50%;
-        background-color: #666;
-    }
-    .footer-container1{
-        display: block;
-        padding: 10px;
-        justify-content: space-between;
-
-        
-    }
-
-    /* music bar  */
-    .music-bar span img{
-        height: 30px;
-        width: 30px;
-        filter: invert(1);
-        align-items: center;
-        padding: 5px;
-        cursor: pointer;
-        margin: 10px;
-        
-    }
-    .music-bar span img:hover{
-        height: 32px;
-        width: 32px;
-        filter: invert(1);
-        align-items: center;
-        padding: 5px;
-        cursor: pointer;
-        margin: 10px;
-        
-    }
-    .music-bar{
-        align-items: center;
-        justify-content: center;
-        height: 40px;
-        display: flex;
-        
-        /* background-color: chartreuse; */
-        background-color: #666;
-        padding: 10px;
-        
-        justify-content: center;
-
-    }
-    .lower-leftbox-3{
-        overflow-y: scroll;
-        max-height: 50vh;
-        
-    }
-    .lower-leftbox-3::-webkit-scrollbar {
-  width: 5px;
-}
-
-.lower-leftbox-3::-webkit-scrollbar-thumb {
-  background-color: #666;
-  border-radius: 10px;
-}
-
-.lower-leftbox-3::-webkit-scrollbar-track {
-  background-color: #444;
-}
-    /* .lower-leftbox-2{
-        position: sticky;
-        margin-bottom: 0px;
-    } */
-.left-mid span img{
-    height: 20px;
-    width: 20px;
-    padding: 6px;
-    cursor: pointer;
-}
-
-.left-mid{
-    display: flex;
-    justify-content: space-between;
-    box-sizing: border-box;
-    /* width: max-content; */
-    /* width: 100%; */
-    border: 2px solid rgb(224, 220, 220);
-    margin-top: 3px;
-    margin-bottom: 3px;
-    margin-left: 5px;
-    margin-right: 5px;
-    align-items: center;
-    border-radius: 20px;
-}
-.play-now{
-    display: flex;
-}
-.song-info{
-    display: flex;
-}
-/* .music-bar{
-    display: block;
-
-} */
-.timeline span{
-    color: antiquewhite;
-    justify-content: end;
-    font-size: 20px;
-}
-
+   
 
 </style>
 <body>
@@ -520,221 +39,192 @@
 <div class="lower-leftbox-3">
    
     <div class="left-mid">
+        
     <span><img src="spotify image/list.png"></span>
     <div class="song-detail">
+        <audio id="song-1" src="songs/black-box-aventador-lp-700-4-12577.mp3"></audio>
     <div><span>song name</span></div>
     <div><span>Artist </span></div>
+    
     </div>
     <div class="play-now">
         <span>Play Now</span>
-    <span><img src="spotify image/next.png" style="padding-right: 0px;"></span>
+  <button class="play-pause" data-song="song-1"><span><img src="spotify image/next.png" style="padding-right: 0px;"></span></button>
     </div>
     
     </div>
     <div class="left-mid">
     <span><img src="spotify image/list.png"></span>
     <div class="song-detail">
+        <audio id="song-2" src="songs/dancing-in-the-stars-219514.mp3"></audio>
     <div><span>song name</span></div>
     <div><span>Artist </span></div>
     </div>
     <div class="play-now">
         <span>Play Now</span>
-    <span><img src="spotify image/next.png" style="padding-right: 0px;"></span>
+        <button class="play-pause" data-song="song-2"><span><img src="spotify image/next.png" style="padding-right: 0px;"></span></button>
     </div>
     
     </div>
     <div class="left-mid">
     <span><img src="spotify image/list.png"></span>
     <div class="song-detail">
+        <audio id="song-3" src="songs/Don't Fret - Quincas Moreira.mp3"></audio>
     <div><span>song name</span></div>
     <div><span>Artist </span></div>
     </div>
     <div class="play-now">
         <span>Play Now</span>
-    <span><img src="spotify image/next.png" style="padding-right: 0px;"></span>
+        <button class="play-pause" data-song="song-3"><span><img src="spotify image/next.png" style="padding-right: 0px;"></span></button>
     </div>
     
     </div>
     <div class="left-mid">
     <span><img src="spotify image/list.png"></span>
     <div class="song-detail">
+        <audio id="song-4" src="songs/I Wonder Whose Kissing Her Now - Freedom Trail Studio.mp3"></audio>
     <div><span>song name</span></div>
     <div><span>Artist </span></div>
     </div>
     <div class="play-now">
         <span>Play Now</span>
-    <span><img src="spotify image/next.png" style="padding-right: 0px;"></span>
+        <button class="play-pause" data-song="song-4"><span><img src="spotify image/next.png" style="padding-right: 0px;"></span></button>
     </div>
     
     </div>
     <div class="left-mid">
     <span><img src="spotify image/list.png"></span>
     <div class="song-detail">
+        <audio id="song-5" src="songs/July - John Patitucci.mp3"></audio>
     <div><span>song name</span></div>
     <div><span>Artist </span></div>
     </div>
     <div class="play-now">
         <span>Play Now</span>
-    <span><img src="spotify image/next.png" style="padding-right: 0px;"></span>
+        <button class="play-pause" data-song="song-5"><span><img src="spotify image/next.png" style="padding-right: 0px;"></span></button>
     </div>
     
     </div>
     <div class="left-mid">
     <span><img src="spotify image/list.png"></span>
     <div class="song-detail">
+        <audio id="song-6" src="songs/kaise-bhula-dun-ashir-184935.mp3"></audio>
     <div><span>song name</span></div>
     <div><span>Artist </span></div>
     </div>
     <div class="play-now">
         <span>Play Now</span>
-    <span><img src="spotify image/next.png" style="padding-right: 0px;"></span>
+    <button class="play-pause" data-song="song-6"><span><img src="spotify image/next.png" style="padding-right: 0px;"></span></button>
     </div>
     
     </div>
     <div class="left-mid">
     <span><img src="spotify image/list.png"></span>
     <div class="song-detail">
+        <audio id="song-7" src="songs/river-flows-in-you-romantic-piano-215745.mp3"></audio>
     <div><span>song name</span></div>
     <div><span>Artist </span></div>
     </div>
     <div class="play-now">
         <span>Play Now</span>
-    <span><img src="spotify image/next.png" style="padding-right: 0px;"></span>
+    <button class="play-pause" data-song="song-7"><span><img src="spotify image/next.png" style="padding-right: 0px;"></span></button>
     </div>
     
     </div>
     <div class="left-mid">
     <span><img src="spotify image/list.png"></span>
     <div class="song-detail">
+        <audio id="song-8" src="songs/melody-bgm-tamil-love-indian-186668.mp3"></audio>
     <div><span>song name</span></div>
     <div><span>Artist </span></div>
     </div>
     <div class="play-now">
         <span>Play Now</span>
-    <span><img src="spotify image/next.png" style="padding-right: 0px;"></span>
+    <button class="play-pause" data-song="song-8"><span><img src="spotify image/next.png" style="padding-right: 0px;"></span></button>
     </div>
     
     </div>
     <div class="left-mid">
     <span><img src="spotify image/list.png"></span>
     <div class="song-detail">
+        <audio id="song-9" src="songs/When Irish Eyes Are Smiling - Freedom Trail Studio.mp3"></audio>
     <div><span>song name</span></div>
     <div><span>Artist </span></div>
     </div>
     <div class="play-now">
         <span>Play Now</span>
-    <span><img src="spotify image/next.png" style="padding-right: 0px;"></span>
+    <button class="play-pause" data-song="song-9"><span><img src="spotify image/next.png" style="padding-right: 0px;"></span></button>
     </div>
     
     </div>
     <div class="left-mid">
     <span><img src="spotify image/list.png"></span>
     <div class="song-detail">
+        <audio id="song-10" src="songs/teri-ye-adaa-romantic-song-206526.mp3"></audio>
     <div><span>song name</span></div>
     <div><span>Artist </span></div>
     </div>
     <div class="play-now">
         <span>Play Now</span>
-    <span><img src="spotify image/next.png" style="padding-right: 0px;"></span>
+    <button class="play-pause" data-song="song-10"><span><img src="spotify image/next.png" style="padding-right: 0px;"></span></button>
     </div>
     
     </div>
     <div class="left-mid">
     <span><img src="spotify image/list.png"></span>
     <div class="song-detail">
+        <audio id="song-11" src="songs/July - John Patitucci.mp3"></audio>
     <div><span>song name</span></div>
     <div><span>Artist </span></div>
     </div>
     <div class="play-now">
         <span>Play Now</span>
-    <span><img src="spotify image/next.png" style="padding-right: 0px;"></span>
+    <button class="play-pause" data-song="song-11"><span><img src="spotify image/next.png" style="padding-right: 0px;"></span></button>
     </div>
     
     </div>
     <div class="left-mid">
     <span><img src="spotify image/list.png"></span>
     <div class="song-detail">
+        <audio id="song-12" src="songs/dancing-in-the-stars-219514.mp3"></audio>
     <div><span>song name</span></div>
     <div><span>Artist </span></div>
     </div>
     <div class="play-now">
         <span>Play Now</span>
-    <span><img src="spotify image/next.png" style="padding-right: 0px;"></span>
+    <button class="play-pause" data-song="song-12"><span><img src="spotify image/next.png" style="padding-right: 0px;"></span></button>
     </div>
     
     </div>
     <div class="left-mid">
     <span><img src="spotify image/list.png"></span>
     <div class="song-detail">
+        <audio id="song-13" src="songs/kaise-bhula-dun-ashir-184935.mp3"></audio>
     <div><span>song name</span></div>
     <div><span>Artist </span></div>
     </div>
     <div class="play-now">
         <span>Play Now</span>
-    <span><img src="spotify image/next.png" style="padding-right: 0px;"></span>
+    <button class="play-pause" data-song="song-13"><span><img src="spotify image/next.png" style="padding-right: 0px;"></span></button>
     </div>
     
     </div>
     <div class="left-mid">
     <span><img src="spotify image/list.png"></span>
     <div class="song-detail">
+        <audio id="song-14" src="songs/teri-ye-adaa-romantic-song-206526.mp3"></audio>
     <div><span>song name</span></div>
     <div><span>Artist </span></div>
     </div>
     <div class="play-now">
         <span>Play Now</span>
-    <span><img src="spotify image/next.png" style="padding-right: 0px;"></span>
+    <button class="play-pause" data-song="song-14"><span><img src="spotify image/next.png" style="padding-right: 0px;"></span></button>
     </div>
     
     </div>
     
        
-        <!-- <audio controls src="/songs/black-box-aventador-lp-700-4-12577.mp3"></audio>
-        
-        <audio controls src="/songs/dancing-in-the-stars-219514.mp3"></audio>
-        <a href="songs/dancing-in-the-stars-219514.mp3"> </a>
-        <audio controls src="/songs/Don't Fret - Quincas Moreira.mp3"></audio>
-        <a href="songs/Don't Fret - Quincas Moreira.mp3"> </a>
-        <audio controls src="/songs/I Wonder Whose Kissing Her Now - Freedom Trail Studio.mp3"></audio>
-        <a href="songs/I Wonder Whose Kissing Her Now - Freedom Trail Studio.mp3"> </a>
-        <audio controls src="/songs/July - John Patitucci.mp3"></audio>
-        <a href="songs/July - John Patitucci.mp3"> </a>
-        <audio controls src=""></audio>
-        <a href="songs/kaise-bhula-dun-ashir-184935.mp3"> </a>
-        <audio controls src="/songs/love-song-152731.mp3"></audio>
-        <a href="songs/love-song-152731.mp3"> </a>
-        <audio controls src="/songs/river-flows-in-you-romantic-piano-215745.mp3"></audio>
-        <a href="songs/river-flows-in-you-romantic-piano-215745.mp3"> </a>
-        <audio controls src="/songs/melody-bgm-tamil-love-indian-186668.mp3"></audio>
-        <a href="songs/melody-bgm-tamil-love-indian-186668.mp3"> </a>
-        <audio controls src="/songs/teri-ye-adaa-romantic-song-206526.mp3"></audio>
-        <a href="songs/teri-ye-adaa-romantic-song-206526.mp3"> </a>
-        <audio controls src="/songs/When Irish Eyes Are Smiling - Freedom Trail Studio.mp3"></audio>
-        <a href="songs/When Irish Eyes Are Smiling - Freedom Trail Studio.mp3"> </a>
-        <audio controls src="/songs/black-box-aventador-lp-700-4-12577.mp3"></audio>
-        <a href="/songs/black-box-aventador-lp-700-4-12577.mp3"> </a>
-        <audio controls src="/songs/dancing-in-the-stars-219514.mp3"></audio>
-        <a href="songs/dancing-in-the-stars-219514.mp3"> </a>
-        <audio controls src="/songs/Don't Fret - Quincas Moreira.mp3"></audio>
-        <a href="songs/Don't Fret - Quincas Moreira.mp3"> </a>
-        <audio controls src="/songs/I Wonder Whose Kissing Her Now - Freedom Trail Studio.mp3"></audio>
-        <a href="songs/I Wonder Whose Kissing Her Now - Freedom Trail Studio.mp3"> </a>
-        <audio controls src="/songs/July - John Patitucci.mp3"></audio>
-        <a href="songs/July - John Patitucci.mp3"> </a>
-        <audio controls src=""></audio>
-        <a href="songs/kaise-bhula-dun-ashir-184935.mp3"> </a>
-        <audio controls src="/songs/love-song-152731.mp3"></audio>
-        <a href="songs/love-song-152731.mp3"> </a>
-        <audio controls src="/songs/river-flows-in-you-romantic-piano-215745.mp3"></audio>
-        <a href="songs/river-flows-in-you-romantic-piano-215745.mp3"> </a>
-        <audio controls src="/songs/melody-bgm-tamil-love-indian-186668.mp3"></audio>
-        <a href="songs/melody-bgm-tamil-love-indian-186668.mp3"> </a>
-        <audio controls src="/songs/teri-ye-adaa-romantic-song-206526.mp3"></audio>
-        <a href="songs/teri-ye-adaa-romantic-song-206526.mp3"> </a>
-        <audio controls src="/songs/When Irish Eyes Are Smiling - Freedom Trail Studio.mp3"></audio>
-        <a href="songs/When Irish Eyes Are Smiling - Freedom Trail Studio.mp3"> </a>
-         -->
-      
+       
     
     <div class="left-mid"></div>
 </div>
@@ -1096,6 +586,8 @@
 
 
     </div>
+    <script src="spotify.js"></script>
+
     <!-- <script>
         console.log('lets write JS');
 
@@ -1131,108 +623,7 @@
         console.log('timeupdate');
     })
     </script> -->
-    <script>
-
-
-    
-const audio = document.getElementById('audio');
-    const playPauseBtn = document.getElementById('play-pause-btn')
-    const prevBtn = document.getElementById('prev-btn');
-    const nextBtn = document.getElementById('next-btn');
-    const currentTime = document.getElementById('current-time');
-    const duration = document.getElementById('duration');
-  const seekBarElement = document.getElementById('seek-bar');
-//   const statusElement = document.getElementById('status');
-
-    
-    
-    
-//     playPauseBtn.addEventListener('click', () => {
-//     if (audio.paused) {
-//       audio.play();
-//       playPauseBtn.innerHTML = 'Pause';
-//     } else {
-//       audio.pause();
-//       playPauseBtn.innerHTML = 'Play';
-//     }
-//   });
-  const songs = [
-  { title: "Song 1", file: "songs/black-box-aventador-lp-700-4-12577.mp3" },
-  { title: "Song 2", file: "songs/dancing-in-the-stars-219514.mp3" },
-  { title: "Song 3", file: "songs/Don't Fret - Quincas Moreira.mp3" },
-  { title: "Song 4", file: "songs/I Wonder Whose Kissing Her Now - Freedom Trail Studio.mp3" },
-  { title: "Song 5", file: "songs/July - John Patitucci.mp3" },
-  { title: "Song 6", file: "songs/kaise-bhula-dun-ashir-184935.mp3" },
-  { title: "Song 7", file: "songs/love-song-152731.mp3" },
-  { title: "Song 8", file: "songs/melody-bgm-tamil-love-indian-186668.mp3" },
-  { title: "Song 9", file: "songs/river-flows-in-you-romantic-piano-215745.mp3" },
-  { title: "Song 10", file: "songs/teri-ye-adaa-romantic-song-206526.mp3" },
-  { title: "Song 11", file: "songs/When Irish Eyes Are Smiling - Freedom Trail Studio.mp3" },
-  { title: "Song 12", file: "songs/July - John Patitucci.mp3" },
-  { title: "Song 13", file: "songs/When Irish Eyes Are Smiling - Freedom Trail Studio.mp3" },
-  { title: "Song 14", file: "/songs/melody-bgm-tamil-love-indian-186668.mp3" }
-];
-
-let currentSongIndex = 0;
-
-  audio.src = songs[currentSongIndex].file;
-  playPauseBtn.addEventListener('click', () => {
-    if (audio.paused) {
-      audio.play();
-      playPauseBtn.innerHTML = 'Pause';
-    } else {
-      audio.pause();
-      playPauseBtn.innerHTML = 'Play';
-    }
-  });
-
-  prevBtn.addEventListener('click', () => {
-    currentSongIndex--;
-    if (currentSongIndex < 0) {
-      currentSongIndex = songs.length - 1;
-    }
-    audio.src = songs[currentSongIndex].file;
-    audio.play();
-  });
-
-  nextBtn.addEventListener('click', () => {
-    currentSongIndex++;
-    if (currentSongIndex >= songs.length) {
-      currentSongIndex = 0;
-    }
-    audio.src = songs[currentSongIndex].file;
-    audio.play();
-  });
-
-  
-
-  audio.onloadedmetadata = () => {
-  const audioDuration = audio.duration;
-  const minutes = Math.floor(audioDuration / 60);
-  const seconds = Math.floor(audioDuration % 60);
-  duration.textContent = `${minutes}:${seconds.toString().padStart(2, '0')}`;
-};
-
-audio.ontimeupdate = () => {
-  const currentTimeValue = audio.currentTime;
-  const minutes = Math.floor(currentTimeValue / 60);
-  const seconds = Math.floor(currentTimeValue % 60);
-  currentTime.textContent = `${minutes}:${seconds.toString().padStart(2, '0')}`;
-};
-
-
-
-  audio.addEventListener('ended', () => {
-    currentSongIndex++;
-    if (currentSongIndex >= songs.length) {
-      currentSongIndex = 0;
-    }
-    audio.src = songs[currentSongIndex].file;
-    audio.play();
-  });
-
-     </script>
-    
+   
     
     
 </body>

@@ -1,4 +1,126 @@
-*{
+/* Mobile devices (portrait and landscape) */
+@media screen and (max-width: 768px) {
+  .leftbox {
+    width: 100%;
+    height: auto;
+  }
+
+  .rightbox {
+    width: 100%;
+    height: auto;
+    margin: 0;
+  }
+
+  .playlist-1 {
+    width: 90%;
+    height: auto;
+  }
+
+  .Spotifyplaylist-conatiner,
+  .artist-container,
+  .radio-conatiner,
+  .albums-conatiner,
+  .featured {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .music-bar {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .heading-element {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .footer-container {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .contact-container {
+    justify-content: center;
+  }
+
+  .rightbox-upper {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .right-icon {
+    margin-top: 10px;
+    margin-right: 0;
+  }
+
+  .lower-leftbox span {
+    width: 100%;
+  }
+}
+
+/* Tablets */
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+  .leftbox {
+    width: 40%;
+  }
+
+  .rightbox {
+    width: 60%;
+  }
+
+  .playlist-1 {
+    width: 45%;
+  }
+
+  .Spotifyplaylist-conatiner,
+  .artist-container,
+  .radio-conatiner,
+  .albums-conatiner,
+  .featured {
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+}
+
+/* Desktops */
+@media screen and (min-width: 1025px) {
+  .leftbox {
+    width: 30%;
+  }
+
+  .rightbox {
+    width: 70%;
+  }
+
+  .playlist-1 {
+    width: 220px;
+  }
+
+  .Spotifyplaylist-conatiner,
+  .artist-container,
+  .radio-conatiner,
+  .albums-conatiner,
+  .featured {
+    flex-wrap: wrap;
+    justify-content: start;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* *{
     margin: 0;
     padding: 0;
     
@@ -483,3 +605,4 @@ font-size: 20px;
 background: transparent;
 border: none;
 }
+ */
